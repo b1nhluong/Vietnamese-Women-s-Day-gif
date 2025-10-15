@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnamese Women's Day - 20/10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<video class="background-video" autoplay muted loop>
+  <source src="background1.mp4" type="video/mp4">
+</video>
+<audio class="background-audio" loop>
+  <source src="background.mp3" type="audio/mpeg">
+</audio>
+<canvas class="canvas"></canvas>
+
+<!-- Start Button -->
+<div class="start-button-container" id="startButtonContainer">
+  <button class="start-button" id="startButton">
+    <span class="start-text">BẮT ĐẦU</span>
+    <span class="start-subtitle">Nhấn để bắt đầu</span>
+  </button>
+</div>
+
+<!-- Images to show after animation -->
+<div class="images-container" id="imagesContainer" style="display: none;">
+  <img src="IMG_7514.jpg" class="center-image" alt="Center Image">
+  <img src="20241019_104240000_iOS.png" class="side-image left-side" alt="Image 1">
+  <img src="20241019_103424000_iOS.png" class="side-image left-side" alt="Image 2">
+  <img src="20241019_042927625_iOS.png" class="side-image left-side" alt="Image 3">
+  <img src="20241019_101426648_iOS.png" class="side-image left-side" alt="Image 4">
+  <img src="2 được xóa nền.png" class="side-image right-side" alt="Image 5">
+  <img src="4 được xóa nền.png" class="side-image right-side" alt="Image 6">
+  <img src="6 được xóa nền.png" class="side-image right-side" alt="Image 7">
+  <img src="8 được xóa nền.png" class="side-image right-side" alt="Image 8">
+  <div class="vietnamese-text">
+    <p>Nhân dịp Ngày Phụ nữ Việt Nam 20/10, thay mặt cho các bạn nam, chúc các bạn luôn xinh đẹp, rạng rỡ như những đóa hoa, học tập thật tốt và đạt được mọi ước mơ, hoài bão của mình.</p>
+    <p>Chúc các bạn có một ngày lễ thật vui vẻ, ý nghĩa và ngập tràn niềm hạnh phúc! Mãi là những cô gái tuyệt vời của A1k56 nhé!</p>
+  </div>
+</div>
+
+<div class="help">?</div> 
+
+<div class="ui">
+  <input class="ui-input" type="text" />
+  <span class="ui-return">↵</span>
+</div>
+
+<div class="overlay">
+  <div class="tabs">
+    <div class="tabs-labels"><span class="tabs-label">Commands</span><span class="tabs-label">Info</span><span class="tabs-label">Share</span></div>
+
+    <div class="tabs-panels">
+      <ul class="tabs-panel commands">
+        <li class="commands-item"><span class="commands-item-title">Text</span><span class="commands-item-info" data-demo="Hello :)">Type anything</span><span class="commands-item-action">Demo</span></li>
+        <li class="commands-item"><span class="commands-item-title">Countdown</span><span class="commands-item-info" data-demo="#countdown 10">#countdown<span class="commands-item-mode">number</span></span><span class="commands-item-action">Demo</span></li>
+        <li class="commands-item"><span class="commands-item-title">Time</span><span class="commands-item-info" data-demo="#time">#time</span><span class="commands-item-action">Demo</span></li>
+        <li class="commands-item"><span class="commands-item-title">Rectangle</span><span class="commands-item-info" data-demo="#rectangle 30x15">#rectangle<span class="commands-item-mode">width x height</span></span><span class="commands-item-action">Demo</span></li>
+        <li class="commands-item"><span class="commands-item-title">Circle</span><span class="commands-item-info" data-demo="#circle 25">#circle<span class="commands-item-mode">diameter</span></span><span class="commands-item-action">Demo</span></li>
+
+        <li class="commands-item commands-item--gap"><span class="commands-item-title">Animate</span><span class="commands-item-info" data-demo="The time is|#time|#countdown 3|#icon thumbs-up"><span class="commands-item-mode">command1</span>&nbsp;|<span class="commands-item-mode">command2</span></span><span class="commands-item-action">Demo</span></li>
+      </ul>
+
+      <div class="tabs-panel ui-details">
+        <div class="ui-details-content">
+          <h1>Shape Shifter</h1>
+          <p>
+            An experiment by <a href="//www.kennethcachia.com" target="_blank">Kenneth Cachia<a/>.<br/>
+            <a href="//fortawesome.github.io/Font-Awesome/#icons-new" target="_blank">Font Awesome</a> is being used to render all #icons.
+          </p>
+
+          <br/><p>Visit <a href="http://www.kennethcachia.com/shape-shifter/?a=#icon thumbs-up" target="_blank">Shape Shifter</a> to use icons.</p>
+        </div>
+      </div>
+
+      <div class="tabs-panel ui-share">
+        <div class="ui-share-content">
+          <h1>Sharing</h1>
+          <p>Simply add <em>?a=</em> to the current URL to share any static or animated text. Examples:</p>
+          <p>
+            <a href="http://www.kennethcachia.com/shape-shifter?a=Hello" target="_blank">www.kennethcachia.com/shape-shifter?a=Hello</a><br/>
+            <a href="http://www.kennethcachia.com/shape-shifter?a=Hello|#countdown 3" target="_blank">www.kennethcachia.com/shape-shifter?a=Hello|#countdown 3</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

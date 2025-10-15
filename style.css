@@ -1,0 +1,487 @@
+body {
+    font-family: "Avenir", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background: #000;
+    color: #666;
+    font-size: 16px;
+    line-height: 1.5em;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+  }
+
+  .background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: 0;
+  }
+
+  .background-audio {
+    position: fixed;
+    top: -9999px;
+    left: -9999px;
+    opacity: 0;
+    z-index: 1;
+  }
+
+  .canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 2;
+    background: transparent;
+    pointer-events: none;
+  }
+
+  .images-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: transparent;
+    z-index: 3;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+  }
+
+  .center-image {
+    position: absolute;
+    width: 600px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 8px;
+    animation: gentleShake 2s ease-in-out infinite;
+    left: 31%;
+    top: 15%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .vietnamese-text {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, calc(-50% + 280px));
+    text-align: center;
+    font-family: 'Dancing Script', cursive;
+    font-size: 25px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+    max-width: 600px;
+    line-height: 1.4;
+  }
+
+  .vietnamese-text p {
+    margin: 10px 0;
+  }
+
+  .side-image {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    animation: gentleShake 2s ease-in-out infinite;
+  }
+
+  .left-side {
+    left: 10%;
+  }
+
+  .right-side {
+    left: 70%;
+  }
+
+  .start-button-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    transition: opacity 0.5s ease-out;
+  }
+
+  .start-button {
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    border: none;
+    border-radius: 20px;
+    padding: 30px 60px;
+    cursor: pointer;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 200px;
+  }
+
+  .start-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #ff5252, #d63031);
+  }
+
+  .start-button:active {
+    transform: translateY(-2px);
+  }
+
+  .start-text {
+    display: block;
+    font-family: 'Dancing Script', cursive;
+    font-size: 36px;
+    font-weight: 700;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 10px;
+  }
+
+  .start-subtitle {
+    display: block;
+    font-family: 'Arial', sans-serif;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .start-button-container.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @keyframes gentleShake {
+    0%, 100% {
+      transform: translateX(0) translateY(0) rotate(0deg);
+    }
+    25% {
+      transform: translateX(-2px) translateY(-1px) rotate(-1deg);
+    }
+    50% {
+      transform: translateX(2px) translateY(1px) rotate(1deg);
+    }
+    75% {
+      transform: translateX(-1px) translateY(2px) rotate(-0.5deg);
+    }
+  }
+  
+  h1 {
+    color: #111;
+    margin: 0 0 12px 0;
+    font-size: 24px;
+    line-height: 1.5em;
+  }
+  
+  p {
+    margin: 0 0 10x 0;
+  }
+  
+  a {
+    color: #888;
+    text-decoration: none;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  a:hover {
+    border-bottom-color: #888;
+  }
+  
+  body,
+  .overlay {
+    -webkit-perspective: 1000;
+    -webkit-perspective-origin-y: 25%;
+  }
+  
+  .body--ready {
+    /* Video background replaces gradient */
+    background: transparent;
+  }
+  
+  .body--ready .overlay {
+    -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -moz-transition: -moz-transform 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -ms-transition: -ms-transform 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -o-transition: -o-transform 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    transition: transform 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1);
+  }
+  
+  
+  .ui {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    width: 300px;
+    margin-left: -150px;
+    display: none; /* Hide UI for Vietnamese Women's Day display */
+  }
+  
+  .ui-input {
+    width: 100%;
+    height: 50px;
+    background: none;
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+    border: none;
+    border-bottom: 2px solid white;
+  }
+  
+  .ui-input:focus {
+    outline: none;
+    border: none;
+    border-bottom: 2px solid white;
+  }
+  
+  .ui-return {
+    display: none;
+    position: absolute;
+    top: 20px;
+    right: 0;
+    padding: 3px 2px 0 2px;
+    font-size: 10px;
+    line-height: 10px;
+    color: #fff;
+    border: 1px solid #fff;
+  }
+  
+  .ui--enter .ui-return {
+    display: block;
+  }
+  
+  .ui--wide {
+    width: 76%;
+    margin-left: 12%;
+    left: 0;
+  }
+  
+  .ui--wide .ui-return {
+    right: -20px;
+  }
+  
+  .help {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    font-size: 13px;
+    line-height: 27px;
+    font-weight: bold;
+    cursor: pointer;
+    background: #fff;
+    color: #79a8ae;
+    opacity: .9;
+    display: none; /* Hide help button for Vietnamese Women's Day display */
+  
+    -webkit-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -moz-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -ms-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -o-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+  }
+  
+  .help:hover {
+    opacity: 1;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 550px;
+    height: 490px;
+    margin: -260px 0 0 -275px;
+    opacity: 0;
+    display: none; /* Hide overlay for Vietnamese Women's Day display */
+  
+    -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+  }
+  
+  .overlay--visible {
+    opacity: 1;
+  
+    -webkit-transform: rotateY(0);
+    -moz-transform: rotateY(0);
+    -ms-transform: rotateY(0);
+    -o-transform: rotateY(0);
+    transform: rotateY(0);
+  }
+  
+  .ui-share,
+  .ui-details {
+    opacity: .9;
+    background: #fff;
+    z-index: 2;
+  }
+  
+  .ui-details-content,
+  .ui-share-content {
+    padding: 100px 50px;
+  }
+  
+  .commands {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    cursor: pointer;
+  }
+  
+  .commands-item {
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 20px;
+    background: #fff;
+    margin-top: 1px;
+    color: #333;
+    opacity: .9;
+  
+    -webkit-transition: -webkit-transform 0.7s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -moz-transition: -moz-transform 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -ms-transition: -ms-transform 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -o-transition: -o-transform 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    transition: transform 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1),
+                        opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+  }
+  
+  .commands-item--gap {
+    margin-top: 9px;
+  }
+  
+  .commands-item:hover {
+    opacity: 1;
+  }
+  
+  .commands-item:hover .commands-item-action {
+    background: #333;
+  }
+  
+  .commands-item a {
+    display: inline-block;
+  }
+  
+  .commands-item-mode {
+    display: inline-block;
+    margin-left: 3px;
+    font-style: italic;
+    color: #ccc;
+  }
+  
+  .commands-item-title {
+    display: inline-block;
+    width: 150px;
+  }
+  
+  .commands-item-info {
+    display: inline-block;
+    width: 300px;
+    font-size: 14px;
+    text-transform: none;
+    letter-spacing: 0;
+    font-weight: normal;
+    color: #aaa;
+  }
+  
+  .commands-item-action {
+    display: inline-block;
+    float: right;
+    margin-top: 3px;
+    text-transform: uppercase;
+    font-size: 10px;
+    line-height: 10px;
+    color: #fff;
+    background: #90c9d1;
+    padding: 5px 10px 4px 10px;
+    border-radius: 3px;
+  }
+  
+  .commands-item:first-child {
+    margin-top: 0;
+  }
+  
+  .twitter-share {
+    position: absolute;
+    top: 4px;
+    right: 20px;
+  }
+  
+  
+  .tabs-labels {
+    margin-bottom: 9px;
+  }
+  
+  .tabs-label {
+    display: inline-block;
+    background: #fff;
+    padding: 10px 20px;
+    font-size: 12px;
+    line-height: 22px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #333;
+    opacity: .5;
+    cursor: pointer;
+    margin-right: 2px;
+  
+    -webkit-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -moz-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -ms-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    -o-transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+    transition: opacity 0.1s cubic-bezier(0.694, 0.0482, 0.335, 1);
+  }
+  
+  .tabs-label:hover {
+    opacity: .9;
+  }
+  
+  .tabs-label--active {
+    opacity: .9;
+  }
+  
+  .tabs-panel {
+    display: none;
+  }
+  
+  .tabs-panel--active {
+    display: block;
+  }
+  
+  .tab-panel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+  
+  .touch .ui-input {
+    display: none;
+  }
